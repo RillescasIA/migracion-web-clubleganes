@@ -40,7 +40,7 @@
       .map(
         (act) => `
       <article class="card" data-category="${act.categoria}">
-        <figure class="card-media ${act.id === 'gimnasia-artistica' ? 'card-media--contain' : ''}">
+        <figure class="card-media">
           <img src="${act.imagen}" alt="${act.alt}" loading="lazy" width="600" height="375">
         </figure>
         <div class="card-body">
