@@ -1,0 +1,20 @@
+# Dependencias y compilaciones
+node_modules/
+dist/
+build/
+
+# Variables de entorno y configuración local
+.env
+.env.local
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+npm-debug.log*
+
+# Copia archivada y utilidades locales (no publicar en GitHub/Render)
+clon_original/
+scripts/
+*.zip

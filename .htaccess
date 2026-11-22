@@ -1,0 +1,48 @@
+# ==========================================================================
+# Club Leganés Club — HTTPS, Seguridad, Rendimiento y Redirecciones SEO 301
+# ==========================================================================
+
+RewriteEngine On
+
+# 1. Forzar HTTPS y unificar a www.clubleganesclub.es
+RewriteCond %{HTTPS} !=on [OR]
+RewriteCond %{HTTP_HOST} ^clubleganesclub\.es$ [NC]
+RewriteRule ^ https://www.clubleganesclub.es%{REQUEST_URI} [L,R=301]
+
+# 2. Redirecciones 301 desde URLs antiguas (preserva posicionamiento en Google)
+RewriteRule ^categoria/1/nosotros/?$ /#nosotros [R=301,NE,L]
+RewriteRule ^categoria/2/pabellones/?$ /#pabellones [R=301,NE,L]
+RewriteRule ^portfolio/?$ /#actividades [R=301,NE,L]
+RewriteRule ^portfolioSingle/.*$ /#actividades [R=301,NE,L]
+RewriteRule ^web/1/Normativa/?$ /#normativa [R=301,NE,L]
+RewriteRule ^paypal/?$ /#inscripcion [R=301,NE,L]
+RewriteRule ^contacto/?$ /#contacto [R=301,NE,L]
+RewriteRule ^contactotrabaja/?$ /#contacto [R=301,NE,L]
+RewriteRule ^blog/?$ /#actividades [R=301,NE,L]
+RewriteRule ^blogPost/.*$ /#actividades [R=301,NE,L]
+
+# 3. Bloquear acceso web a archivos internos/clon/scripts si existieran
+RewriteRule ^(scripts|clon_original)/ - [F,L]
+<FilesMatch "\.(md|mjs|json|gitignore)$">
+  Require all denied
+</FilesMatch>
+
+# 4. Cabeceras de seguridad
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+</IfModule>
+
+# 5. Caché de navegador para recursos estáticos
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/jpeg "access plus 6 months"
+  ExpiresByType image/png "access plus 6 months"
+  ExpiresByType image/webp "access plus 6 months"
+  ExpiresByType image/svg+xml "access plus 6 months"
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+  ExpiresByType application/pdf "access plus 1 month"
+</IfModule>

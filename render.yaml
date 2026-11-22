@@ -1,0 +1,53 @@
+services:
+  - type: web
+    name: web-clubleganesclub
+    runtime: static
+    staticPublishPath: .
+    pullRequestPreviewsEnabled: false
+    headers:
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+      - path: /*
+        name: X-Frame-Options
+        value: SAMEORIGIN
+      - path: /*
+        name: Referrer-Policy
+        value: strict-origin-when-cross-origin
+      - path: /*
+        name: Permissions-Policy
+        value: geolocation=(), microphone=(), camera=()
+      - path: /assets/*
+        name: Cache-Control
+        value: public, max-age=15552000, immutable
+    routes:
+      - type: redirect
+        source: /categoria/1/nosotros
+        destination: /#nosotros
+      - type: redirect
+        source: /categoria/2/pabellones
+        destination: /#pabellones
+      - type: redirect
+        source: /portfolio
+        destination: /#actividades
+      - type: redirect
+        source: /portfolioSingle/*
+        destination: /#actividades
+      - type: redirect
+        source: /web/1/Normativa
+        destination: /#normativa
+      - type: redirect
+        source: /paypal
+        destination: /#inscripcion
+      - type: redirect
+        source: /contacto
+        destination: /#contacto
+      - type: redirect
+        source: /contactotrabaja
+        destination: /#contacto
+      - type: redirect
+        source: /blog
+        destination: /#actividades
+      - type: redirect
+        source: /blogPost/*
+        destination: /#actividades
