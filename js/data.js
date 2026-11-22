@@ -165,7 +165,7 @@ window.CLC_DATA = {
       id: "olimpia",
       num: "04",
       nombre: "Pabellón Olimpia",
-      zona: "Zarzaquemada / Norte",
+      zona: "Barrio de San Nicasio",
       imagen: "assets/img/pab-olimpia.jpg",
       direccion: "C/ del Cobre, 12 · 28914 Leganés, Madrid",
       lineas: ["Bus 482", "Bus 432", "Bus 480", "Bus 484"],
